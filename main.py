@@ -1,5 +1,6 @@
 counts={}
 def count_batteries_by_health(present_capacities):
+  h=e=f=0
   for i in present_capacities:
     soh=100*i/120
     if soh>=80 and soh<=100:
@@ -16,7 +17,7 @@ def count_batteries_by_health(present_capacities):
 
 def test_bucketing_by_health():
   print("Counting batteries by SoH...\n")
-  present_capacities = input().split()
+  present_capacities =map(int,input().split())
   count_batteries_by_health(present_capacities)
   assert(counts["healthy"] == 2)
   assert(counts["exchange"] == 3)
@@ -24,6 +25,7 @@ def test_bucketing_by_health():
   assert(counts["healthy"] == 1)
   assert(counts["exchange"] ==2)
   assert(counts["failed"] == 2)
+ 
   print("Done counting :)")
 
 
